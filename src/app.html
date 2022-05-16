@@ -1,0 +1,47 @@
+<template>
+    <lightning-card icon-name="utility:connected_apps" title="Search and Update Contacts">
+        <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+        <div class="slds-form-element">
+            <div class="slds-p-horizontal_medium">
+                <lightning-input type="text" onchange={handleInputChange} placeholder={placeholder}>
+                </lightning-input>
+            </div>
+            <ul class="slds-listbox slds-listbox_vertical">
+                <template if:true={searchRecords} for:each={searchRecords} for:item="record" for:index="index">
+                    <li class="slds-listbox__item" data-record-id={record.Id} key={record.Id}>
+                        <div data-id={record.Id}
+                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                            role="option">
+                            <span class="slds-media__figure slds-listbox__option-icon">
+                                <span class="slds-icon_container slds-icon-standard-account">
+                                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                        <use xlink:href={ICON_URL}></use>0
+                                    </svg>
+                                </span>
+                            </span>
+                            <span class="slds-media__body">
+                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                    {record.FIELD1}
+                                </span>
+                                <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                                    {record.FIELD2} &nbsp; {record.FIELD3}
+                                </span>
+                            </span>
+                            <span if:false={record.FIELD4}>
+                                <lightning-button label="Add to Account" title="Download action" value={record.Id}
+                                    icon-name="utility:add" class="slds-m-left_x-small" onclick={addtoaccount}>
+                                </lightning-button>
+                            </span>
+                            <span if:true={record.FIELD4}>
+                                <lightning-button label="Add to Account" title="Download action" value={record.Id}
+                                    icon-name="utility:add" disabled="true" class="slds-m-left_x-small"
+                                    onclick={addtoaccount}>
+                                </lightning-button>
+                            </span>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+</template>

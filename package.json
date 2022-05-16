@@ -1,0 +1,7 @@
+{
+  "name": "@wcd/jarretfawcett.lwc-l38zpadk-fork-l392fazg",
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "npx wcd-cli@latest serve 5ykCCkXK1XluDOEMVHPg --open"
+  }
+}
